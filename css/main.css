@@ -65,9 +65,19 @@ a {
 
 .ep-item h3 {
 	color: #00587a;
+	margin-bottom: 13px;
+}
+
+.ep-item h5 {
+	margin-top: 0;
 }
 
 .delete {
 	color: red;
 	margin-left: 38%;
+}
+
+.date {
+	font-size: 12px;
+	margin-bottom: 4px;
 }

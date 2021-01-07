@@ -6,6 +6,7 @@ $database = new Database();
 $podcasts = $database->allPodcasts();
 
 foreach($podcasts as $pod) {
+	echo '<div>Fetching:' . $pod['title'] . '</div><br>';
 	$url = $pod['url'];
 	$page = file_get_contents($url);
 	$parsed = simplexml_load_string($page);
