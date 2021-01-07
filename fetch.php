@@ -25,7 +25,8 @@ foreach($podcasts as $pod) {
 			    'summary' => (string) $item->description,
 				'pub_date' => $real_date,
 				'url' => (string) $item->link,
-				'audio_url' => (string) $item->enclosure['url']
+				'audio_url' => (string) $item->enclosure['url'],
+				'podcast' => $pod['title']
 			);
 
 			$database->addEpisode($ep);

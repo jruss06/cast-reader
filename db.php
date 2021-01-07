@@ -82,7 +82,7 @@ class Database
 
     public function allEpisodes() {
         $db = $this->setup();
-		$results = $db->query('select title,summary,url,audio_url,pub_date from episodes order by pub_date DESC');
+		$results = $db->query('select title,summary,url,audio_url,pub_date,podcast from episodes order by pub_date DESC');
 
 		$episodes = [];
 		foreach($results as $row) {
@@ -91,7 +91,8 @@ class Database
 				'summary' => $row['summary'],
 				'url' => $row['url'],
 				'audio' => $row['audio_url'],
-				'date' => $row['pub_date']
+				'date' => $row['pub_date'],
+				'podcast' => $row['podcast']
 	    	];
 		}
 
@@ -117,8 +118,8 @@ class Database
 
     public function addEpisode($item) {
 		$db = $this->setup();
-		$command = $db->prepare('INSERT INTO episodes (podcast_id, title, summary, url, pub_date, audio_url) 
-				values (:podcast_id, :title, :summary, :url, :pub_date, :audio_url)');
+		$command = $db->prepare('INSERT INTO episodes (podcast_id, title, summary, url, pub_date, audio_url, podcast) 
+				values (:podcast_id, :title, :summary, :url, :pub_date, :audio_url, :podcast)');
 	
 		$command->bindValue(':podcast_id', $item['podcast_id']);
 		$command->bindValue(':title', $item['title']);
@@ -126,6 +127,7 @@ class Database
 		$command->bindValue(':url', $item['url']);
 		$command->bindValue(':pub_date', $item['pub_date']);
 		$command->bindValue(':audio_url', $item['audio_url']);
+		$command->bindValue(':podcast', $item['podcast']);
 
 		$command->execute() or die(print_r($command->errorInfo(), true));
     }

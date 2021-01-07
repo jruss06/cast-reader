@@ -17,6 +17,7 @@ create TABLE episodes (
     url VARCHAR(255),
     pub_date Date,
     audio_url VARCHAR(255),
+	podcast VARCHAR(255),
     primary key (id),
     FOREIGN KEY (podcast_id)
 		REFERENCES podcasts (id)
