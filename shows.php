@@ -11,10 +11,11 @@ $podcasts = $database->allPodcasts();
 <?php
 
 foreach ($podcasts as $pod) {
-	echo '<a href="show?id='. $pod['id'] .'">';	
+	echo '<a href="episodes?podcast='. $pod['id'] .'">';	
 	echo '<div class="podcast-item">';
 	echo '<h3>' . $pod['title'] . '</h3>';
-	echo '<div>' . $pod['summary'] . '</div>';
+	echo '<div>' . $pod['summary'] . '</div><br>';
+	echo '<a href="show?id='. $pod['id'] .'">details</a>';	
 	echo '</div>';
 	echo '</a>';
 }
