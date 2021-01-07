@@ -82,7 +82,7 @@ class Database
 
     public function allEpisodes() {
         $db = $this->setup();
-		$results = $db->query('select title,summary,url,audio_url,pub_date from episodes');
+		$results = $db->query('select title,summary,url,audio_url,pub_date from episodes order by pub_date DESC');
 
 		$episodes = [];
 		foreach($results as $row) {
