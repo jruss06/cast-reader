@@ -47,6 +47,7 @@ a {
 
 .podcast-item {
 	padding: 0 15px 15px;
+	margin-bottom: 20px;
 	border: 1px solid gray;
 	color: #444;
 }
@@ -64,4 +65,9 @@ a {
 
 .ep-item h3 {
 	color: #00587a;
+}
+
+.delete {
+	color: red;
+	margin-left: 38%;
 }

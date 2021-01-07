@@ -4,6 +4,11 @@ require_once('db.php');
 
 $database = new Database();
 $podcasts = $database->allPodcasts();
+?>
+
+<div><a href="show?action=new"><span class="btn">Add</span></a></div><br>
+
+<?php
 
 foreach ($podcasts as $pod) {
 	echo '<a href="show?id='. $pod['id'] .'">';	

@@ -50,6 +50,18 @@ class Database
 		return $episode;
 	}
 
+    public function addPodcast($title, $summary, $url) {
+		$db = $this->setup();
+		$command = $db->prepare('INSERT INTO podcasts (title, summary, url) 
+				values (:title, :summary, :url)');
+	
+		$command->bindValue(':title', $title);
+		$command->bindValue(':summary', $summary);
+		$command->bindValue(':url', $url);
+
+		$command->execute() or die(print_r($command->errorInfo(), true));
+    }
+
     public function updatePodcast($id, $title, $summary, $url) {
         $db = $this->setup();
 		$command = $db->prepare('update podcasts set title=:title, summary=:summary, url=:url where id=:id');
@@ -59,6 +71,14 @@ class Database
 		$command->bindValue(':url', $url);
 		$command->execute();
 	}
+
+    public function deletePodcast($id) {
+		$db = $this->setup();
+		$command = $db->prepare('delete from podcasts where id=:id');
+		$command->bindValue(':id', $id);
+
+		$command->execute() or die(print_r($command->errorInfo(), true));
+    }
 
     public function allEpisodes() {
         $db = $this->setup();
