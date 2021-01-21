@@ -103,7 +103,7 @@ class Database
     public function episodesByPodcast($id) {
         $db = $this->setup();
 		$command = $db->prepare('select title,summary,url,audio_url,pub_date,podcast
-			   	from episodes where podcast_id=:id limit 20');
+			   	from episodes where podcast_id=:id order by pub_date DESC limit 20');
 		$command->bindValue(':id', $id);
 		$command->execute();
 
