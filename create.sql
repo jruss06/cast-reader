@@ -1,15 +1,12 @@
-use cast_reader;
-
 create TABLE podcasts (
-    id INT AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     summary TEXT,
-    url VARCHAR(255),
-    primary key(id)
+    url VARCHAR(255)
 );
 
 create TABLE episodes (
-    id INT AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     podcast_id INT not null,
     mark_read bool default false,
     title VARCHAR(255),
@@ -18,7 +15,6 @@ create TABLE episodes (
     pub_date Date,
     audio_url VARCHAR(255),
 	podcast VARCHAR(255),
-    primary key (id),
     FOREIGN KEY (podcast_id)
 		REFERENCES podcasts (id)
 );
