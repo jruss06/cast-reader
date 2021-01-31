@@ -3,9 +3,9 @@
 class Database 
 {
 	static function setup() {
-		$dsn = 'mysql:dbname=cast_reader;host=127.0.0.1';
-		$user = 'castReader';
-		$password = 'castReader';
+		$dsn = 'pgsql:host=localhost;dbname=podcasts;';
+		$user = 'podcasts';
+		$password = 'podcast1234';
 
 		try {
 			$dbh = new PDO($dsn, $user, $password);
